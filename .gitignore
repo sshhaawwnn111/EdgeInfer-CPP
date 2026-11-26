@@ -1,8 +1,18 @@
-# Compiled CUDA executables
+build/
+*.o
+*.a
+*.so
+*.ptx
+*.cubin
+*.log
+
+
+attention_pipeline
 benchmark_rmsnorm
 benchmark_rmsnorm_graph
+gqa_attention
+kv_cache
+kv_cache_runtime_test
 rmsnorm
 rope
 vector_add
-kv_cache
-gqa_attention
