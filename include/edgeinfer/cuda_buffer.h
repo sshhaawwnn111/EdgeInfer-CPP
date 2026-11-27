@@ -11,6 +11,7 @@ class CudaBuffer {
 public:
     CudaBuffer() = default;
 
+    // "explicit" means the constructor must be called explicitly.
     explicit CudaBuffer(size_t bytes)
         : bytes_(bytes) {
         if (bytes_ > 0) {
@@ -18,6 +19,7 @@ public:
         }
     }
 
+    // "noexcept" means the destructor will not throw any exceptions. This is to prevent termination.
     ~CudaBuffer() noexcept {
         release();
     }
@@ -25,6 +27,7 @@ public:
     CudaBuffer(const CudaBuffer&) = delete;
     CudaBuffer& operator=(const CudaBuffer&) = delete;
 
+    // CudaBuffer&& means rvalue reference.
     CudaBuffer(CudaBuffer&& other) noexcept {
         move_from(other);
     }
@@ -37,6 +40,7 @@ public:
         return *this;
     }
 
+    // "void* data()" means the function returns a pointer to void.
     void* data() { return ptr_; }
     const void* data() const { return ptr_; }
 
